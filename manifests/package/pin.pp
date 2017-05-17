@@ -55,7 +55,7 @@ class elasticsearch::package::pin {
             "grep -F '${_lock_line}' ${_versionlock}",
           ],
         }
-      } elsif ($elasticsearch::version != false) {
+      } elsif ($elasticsearch::version != false and $elasticsearch::manage_repo == true) {
         yum::versionlock {
           "0:elasticsearch-${elasticsearch::pkg_version}.noarch":
             ensure => $elasticsearch::ensure,
